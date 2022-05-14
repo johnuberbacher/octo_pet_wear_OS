@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:octo_pet_wear_os/game.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:octo_pet_wear_os/game.dart';
 

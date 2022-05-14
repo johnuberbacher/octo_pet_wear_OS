@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:wear/wear.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_widgets/animated_widgets.dart';
 import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:octo_pet_wear_os/ui/ui.dart';
 
