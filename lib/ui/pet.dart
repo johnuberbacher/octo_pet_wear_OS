@@ -18,9 +18,7 @@ class Pet extends StatelessWidget {
       builder: (BuildContext context, WearMode mode, Widget? child) {
         return mode == WearMode.active
             ? GestureDetector(
-                onTap: () {
-                  actionEmote();
-                },
+                onTap: () => actionEmote(),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 1000),
                   child: petSprite(),

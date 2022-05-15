@@ -22,8 +22,9 @@ class _GameState extends State<Game> with WidgetsBindingObserver {
   String petMood = '';
   int petHealth = 1800; // 7200 seconds = 2 hours
   bool isEmote = false;
+  bool isMenu = false;
 
-  int negativeModifier = 60;
+  int negativeModifier = 1;
   int positiveModifier = 60;
   int maximumHealth = 1800;
 
@@ -105,11 +106,27 @@ class _GameState extends State<Game> with WidgetsBindingObserver {
     }
   }
 
+  actionOpenMenu() {
+    audioUI.play();
+    if (mounted) {
+      setState(() {
+        isMenu = true;
+      });
+    }
+  }
+
+  actionCloseMenu() {
+    audioUI.play();
+    if (mounted) {
+      setState(() {
+        isMenu = true;
+      });
+    }
+  }
+
   showEgg() {
     return GestureDetector(
-      onTap: () {
-        actionHatchEgg();
-      },
+      onTap: () => actionHatchEgg(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -287,20 +304,21 @@ class _GameState extends State<Game> with WidgetsBindingObserver {
         return Scaffold(
           backgroundColor: Colors.transparent,
           body: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                scale: 2.5,
-                repeat: ImageRepeat.repeat,
-                alignment: Alignment(0, 0),
-                image: AssetImage(
-                  mode == WearMode.active ? 'assets/images/bg.png' : 'assets/images/bg_ambient.png',
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  scale: 2.5,
+                  repeat: ImageRepeat.repeat,
+                  alignment: Alignment(0, 0),
+                  image: AssetImage(
+                    mode == WearMode.active
+                        ? 'assets/images/bg.png'
+                        : 'assets/images/bg_ambient.png',
+                  ),
                 ),
               ),
-            ),
-            child: petType != 'egg' ? showPet() : showEgg(),
-          ),
+              child: petType != 'egg' ? showPet() : showEgg()),
         );
       },
     );
